@@ -1,6 +1,8 @@
 #ifndef CUBE_H
 #define CUBE_H
 
+#include <array>
+
 struct TrigCache {
     float sinA, cosA, sinB, cosB, sinC, cosC;
 };
@@ -24,8 +26,8 @@ const float INCREMENT_ANGLE_C    = 0.01;
 const float SCALE_FACTOR         = 40;
 const char BACKGROUND_ASCII_CODE = ' ';
 
-char character_buffer[SCREEN_AREA];
-float depth_buffer[SCREEN_AREA];
+std::array<char, SCREEN_AREA> characterBuffer{};
+std::array<float, SCREEN_AREA> depthBuffer{};
 
 float calculateZ(float i, float j, float k, const TrigCache &trig);
 float calculateX(float i, float j, float k, const TrigCache &trig);

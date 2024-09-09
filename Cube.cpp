@@ -41,11 +41,12 @@ int main(int argc, char const *argv[]) {
 }
 
 void drawCube() {
-    memset(character_buffer, BACKGROUND_ASCII_CODE, SCREEN_AREA);
-    memset(depth_buffer, 0, SCREEN_AREA * 4);
+    fill(characterBuffer.begin(), characterBuffer.end(), BACKGROUND_ASCII_CODE);
+    fill(depthBuffer.begin(), depthBuffer.end(), 0);
 
     TrigCache trig = computeTrigCache();
     processSurfaces(trig);
+
     cout << "\x1b[H";
     stringstream bufferStream;
 
@@ -54,7 +55,7 @@ void drawCube() {
         if (k % SCREEN_WIDTH == 0 && k != 0) {
             bufferStream << '\n';
         }
-        bufferStream << character_buffer[k];
+        bufferStream << characterBuffer[k];
     }
     bufferStream << "\x1b[H"; // move cursor to top-left corner
     cout << bufferStream.str();
@@ -112,9 +113,9 @@ void calculateForSurface(float cubeX, float cubeY, float cubeZ, int ch, const Tr
     idxBuffer = pointX + pointY * SCREEN_WIDTH;
 
     if (idxBuffer >= 0 && idxBuffer < SCREEN_AREA) {
-        if (oneOnZ > depth_buffer[idxBuffer]) {
-            depth_buffer[idxBuffer] = oneOnZ;
-            character_buffer[idxBuffer] = ch;
+        if (oneOnZ > depthBuffer[idxBuffer]) {
+            depthBuffer[idxBuffer] = oneOnZ;
+            characterBuffer[idxBuffer] = ch;
         }
     }
 }
