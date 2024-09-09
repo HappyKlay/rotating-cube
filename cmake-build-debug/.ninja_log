@@ -1,0 +1,5 @@
+# ninja log v5
+2	851	7476036918474188	CMakeFiles/learning.dir/Cube.cpp.obj	5238654c045dbb40
+2	2496	7475887109345358	CMakeFiles/learning.dir/main.cpp.obj	f2bd8cf4940451bd
+851	936	7476036919293296	learning.exe	48603baae7d46b92
+0	439	7476067609601322	build.ninja	84acd4a19f7a4e4e
