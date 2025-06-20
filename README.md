@@ -1,2 +1,2 @@
 # rotating-cube
-console rotating 3d cube
+console rotating 3d cube in lua
